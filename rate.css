@@ -1,0 +1,54 @@
+:root {
+    --primary-orange: #FFBD59;
+    --highlight-orange: #F4A42B;
+    --white: #ffffff;
+    --cream: #FFF8E7;
+    --text-dark: #333;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+body { background-color: var(--cream); color: var(--text-dark); overflow-x: hidden; }
+
+/* Header styles inherited from homepage.css */
+
+/* --- RATING SECTION --- */
+main { padding: 40px 20px; display: flex; justify-content: center; }
+.rating-container { width: 100%; max-width: 600px; text-align: center; }
+
+.hero-image { margin-bottom: 30px; display: flex; justify-content: center; }
+.circle-bg { width: 250px; height: 250px; background-color: #FFD580; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
+.circle-bg img { width: 80%; }
+
+h1 { font-size: 1.8rem; font-weight: 800; color: var(--highlight-orange); margin-bottom: 10px; }
+.subtitle { color: #555; font-size: 1rem; margin-bottom: 30px; font-weight: 600; }
+
+h3 { margin-bottom: 15px; font-weight: 700; font-size: 1.1rem; }
+
+/* Stars */
+.stars { display: flex; justify-content: center; gap: 10px; margin-bottom: 25px; }
+.stars i { font-size: 2.5rem; color: #ddd; cursor: pointer; transition: 0.3s; }
+.stars i.active { color: var(--highlight-orange); }
+
+/* Feedback Box */
+.feedback-box { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); position: relative; }
+textarea { width: 100%; min-height: 120px; border: none; outline: none; font-size: 0.95rem; resize: none; color: #444; }
+
+.feedback-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding-top: 10px; border-top: 1px solid #eee; }
+
+.image-upload-btn { display: flex; align-items: center; gap: 8px; color: #888; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+.image-upload-btn:hover { color: var(--highlight-orange); }
+
+.btn-submit { background: var(--highlight-orange); color: white; border: none; padding: 8px 30px; border-radius: 50px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+.btn-submit:hover { transform: scale(1.05); }
+
+/* Image Preview */
+#image-preview-container { margin-top: 15px; position: relative; width: 100px; height: 100px; }
+#image-preview { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; border: 2px solid #eee; }
+.remove-img { position: absolute; top: -10px; right: -10px; color: red; background: white; border-radius: 50%; cursor: pointer; font-size: 1.2rem; }
+
+/* --- FOOTER --- */
+footer { background-color: var(--primary-orange); color: white; padding: 40px 10%; margin-top: 50px; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
+.footer-logo img { width: 100px; border-radius: 50%; border: 3px solid white; margin-bottom: 15px; }
+.footer-col a { display: block; color: white; text-decoration: none; font-size: 0.85rem; margin-bottom: 10px; opacity: 0.9; }
+.footer-col h4 { margin-bottom: 20px; font-family: 'Fredoka One', cursive; letter-spacing: 1px; }

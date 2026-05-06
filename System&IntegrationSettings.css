@@ -1,0 +1,58 @@
+/* --- LAYOUT --- */
+.settings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    align-items: start;
+}
+
+.settings-card { background: #fff; border: 2px solid #333; border-radius: 20px; overflow: hidden; box-shadow: 8px 8px 0px rgba(0,0,0,0.05); }
+
+/* Headers */
+.card-header-orange { background: #FFBD59; padding: 15px 20px; display: flex; align-items: center; gap: 15px; border-bottom: 2px solid #333; }
+.card-header-orange h3 { font-family: 'Fredoka One', cursive; font-size: 1rem; color: #000; }
+.card-inner { padding: 20px; }
+
+h4 { font-family: 'Fredoka One', cursive; font-size: 0.9rem; margin-bottom: 12px; color: #333; }
+
+/* Profile Section */
+.profile-row { display: flex; gap: 15px; margin-bottom: 25px; }
+.avatar-box { width: 60px; height: 60px; background: #eee; border: 2px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+.profile-inputs { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+.input-group-row { display: flex; gap: 10px; }
+
+input, select, textarea { 
+    width: 100%; padding: 8px 12px; border: 1.5px solid #333; border-radius: 8px; 
+    font-family: inherit; font-weight: 600; outline: none; background: #fff;
+}
+.role-tag { background: #eee; border: 1.5px solid #333; padding: 5px 15px; border-radius: 8px; font-weight: 800; font-size: 0.8rem; }
+.btn-change { background: #999; color: white; border: 1.5px solid #333; border-radius: 8px; padding: 0 15px; font-weight: 700; cursor: pointer; }
+
+/* Table Spacing */
+table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+th { text-align: left; font-size: 0.75rem; color: #666; padding-bottom: 8px; }
+td { padding: 5px 0; }
+.time-input { width: 90px; font-size: 0.8rem; background: #eee; }
+
+/* Right Column Specials */
+.status-indicators { display: flex; gap: 10px; margin-bottom: 20px; }
+.status-box { flex: 1; padding: 10px; border-radius: 12px; border: 1.5px solid #333; }
+.status-box.new { background: #A5D6A7; }
+.status-box.review { background: #EF9A9A; }
+.status-box span { display: block; font-size: 0.7rem; font-weight: 800; }
+.status-box strong { font-size: 1rem; }
+
+.btn-connect { width: 100%; background: #1B5E20; color: white; padding: 10px; border-radius: 8px; border: none; font-weight: 800; margin: 10px 0; cursor: pointer; }
+.notes-row { display: flex; gap: 10px; }
+.btn-save-notes { background: #4CAF50; color: white; border: none; padding: 0 15px; border-radius: 8px; font-weight: 700; cursor: pointer; }
+
+/* Approval Buttons */
+.approval-btns { display: flex; gap: 10px; margin-top: 15px; }
+.btn-approve { flex: 1; background: #1B5E20; color: white; border: none; padding: 12px; border-radius: 10px; font-weight: 800; cursor: pointer; }
+.btn-decline { flex: 1; background: #D32F2F; color: white; border: none; padding: 12px; border-radius: 10px; font-weight: 800; cursor: pointer; }
+
+.btn-save-all { width: 100%; background: #2E7D32; color: white; border: none; padding: 15px; border-radius: 12px; font-weight: 800; font-size: 1rem; cursor: pointer; margin-top: 20px; }
+
+/* Status Pill */
+.status-pill { padding: 2px 8px; border-radius: 5px; font-size: 0.7rem; font-weight: 800; color: white; }
+.status-pill.green { background: #4CAF50; }

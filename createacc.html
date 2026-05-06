@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Kabayan Member</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="createacc.css">
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+    
+    <style>
+        /* --- CUSTOM SOCIAL BUTTONS (Pill-shaped, Transparent, White Outline) --- */
+        .social-login { 
+            display: flex; 
+            gap: 15px; /* Spacing sa gitna ng dalawang button */
+            margin-top: 15px; 
+            width: 100%;
+        }
+
+        .btn-social-pill {
+            flex: 1; /* Para pantay sila ng lapad */
+            padding: 12px;
+            border-radius: 30px; /* Pill-shape */
+            border: 1.5px solid #fff; /* White outline */
+            background: transparent; /* Walang background color */
+            color: #fff; /* White text */
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-social-pill:hover {
+            background: rgba(255, 255, 255, 0.15); /* Light hover effect */
+        }
+
+        .social-icon {
+            font-size: 1.1rem;
+        }
+
+        /* Para hindi mag-overlap ang reCAPTCHA sa small screens */
+        .recaptcha-wrapper {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+            transform-origin: center;
+        }
+        
+        @media (max-width: 400px) {
+            .recaptcha-wrapper { transform: scale(0.85); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="g_id_onload"
+         data-client_id="47612712308-8rh4nfkq5s74rkova2pe60h9p8en2jmb.apps.googleusercontent.com"
+         data-context="signup"
+         data-callback="handleCredentialResponse"
+         data-auto_prompt="false">
+    </div>
+
+    <div class="main-container">
+        
+        <div class="left-side">
+            <div class="overlay">
+                <div class="content">
+                    <p class="subtitle">COME IN</p>
+                    <h1 class="main-title">WE ARE OPEN</h1>
+                    <div class="divider-line"></div>
+                    <p class="time">10:00 AM TO 3:00 AM</p>
+                    <p class="address">1785 Evangelista St. near Malvar St.<br>Bangkal, Makati</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-side">
+            <div class="header-logo">
+                <img src="logo.png" alt="Logo">
+            </div>
+
+            <div class="form-wrapper">
+                <h2 class="form-heading">Create an Account</h2>
+                <p class="form-subheading">Become a Kabayan Member!</p>
+                <p class="form-text">Sign up now for faster checkout and exclusive treats!</p>
+
+                <form action="register.php" method="POST" class="register-form" id="mainRegisterForm">
+                    <div class="input-row">
+                        <input type="text" name="full_name" placeholder="Name" required>
+                        <input type="text" name="contact" placeholder="Contact Number">
+                    </div>
+                    
+                    <input type="email" name="email" placeholder="Email" required>
+
+                    <div class="password-field">
+                        <input type="password" name="password" id="pass" placeholder="Create your Password" required>
+                        <i class="far fa-eye toggle-eye" onclick="togglePass('pass')"></i>
+                    </div>
+
+                    <div class="password-field">
+                        <input type="password" name="confirm_password" id="cpass" placeholder="Confirm Password" required>
+                        <i class="far fa-eye toggle-eye" onclick="togglePass('cpass')"></i>
+                    </div>
+
+                    <div class="recaptcha-wrapper">
+                        <div class="g-recaptcha" data-sitekey="6LckqpwsAAAAAAdyj6bFeopEaj80stQkJ_RIHeQQ"></div>
+                    </div>
+
+                    <button type="submit" name="submit" class="btn-submit">Create Account</button>
+                </form>
+
+                <div class="or-divider"><span>Or Register with</span></div>
+
+                <div class="social-login">
+                    <button type="button" class="btn-social-pill" onclick="googleCustomLogin()">
+                        <i class="fab fa-google social-icon"></i> Google
+                    </button>
+                    
+                    <button type="button" class="btn-social-pill" onclick="fbLogin()">
+                        <i class="fab fa-facebook-f social-icon"></i> Facebook
+                    </button>
+                </div>
+
+                <p class="footer-login">Already have an account? <a href="login.php">Log In</a></p>
+            </div>
+
+            <form id="google-login-form" action="login.php" method="POST" style="display:none;">
+                <input type="hidden" name="google_login" value="1">
+                <input type="hidden" name="credential" id="google-credential">
+                <input type="hidden" name="g-recaptcha-response" id="google-recaptcha-response">
+            </form>
+
+            <form id="fb-login-form" action="login.php" method="POST" style="display:none;">
+                <input type="hidden" name="fb_login" value="1">
+                <input type="hidden" name="fb_email" id="fb-email">
+                <input type="hidden" name="fb_name" id="fb-name">
+                <input type="hidden" name="g-recaptcha-response" id="fb-recaptcha-response">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // 1. RECAPTCHA CHECKER
+        function checkRecaptcha() {
+            const res = grecaptcha.getResponse();
+            if (res.length == 0) { 
+                alert("Paki-tsek muna ang 'I'm not a robot' box."); 
+                return false; 
+            }
+            return res;
+        }
+
+        // 2. MANUAL FORM VALIDATION
+        document.getElementById("mainRegisterForm").addEventListener("submit", function(e) {
+            if (!checkRecaptcha()) e.preventDefault();
+        });
+
+        // 3. GOOGLE CUSTOM LOGIN LOGIC
+        function googleCustomLogin() {
+            if (!checkRecaptcha()) return;
+            // Tinatawag nito ang Google Popup / One Tap gamit ang custom button
+            google.accounts.id.prompt((notification) => {
+                if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
+                    alert("Please allow Google popups to sign in.");
+                }
+            });
+        }
+
+        function handleCredentialResponse(response) {
+            const token = checkRecaptcha();
+            if (token) {
+                document.getElementById('google-credential').value = response.credential;
+                document.getElementById('google-recaptcha-response').value = token;
+                document.getElementById('google-login-form').submit();
+            }
+        }
+
+        // 4. FACEBOOK LOGIC
+        window.fbAsyncInit = function() { 
+            FB.init({ appId: '3396938717141397', cookie: true, xfbml: true, version: 'v18.0' }); 
+        };
+
+        function fbLogin() {
+            const token = checkRecaptcha();
+            if (!token) return;
+            
+            FB.login(function(response) {
+                if (response.status === 'connected') {
+                    FB.api('/me', {fields: 'name,email'}, function(userData) {
+                        document.getElementById('fb-email').value = userData.email;
+                        document.getElementById('fb-name').value = userData.name;
+                        document.getElementById('fb-recaptcha-response').value = token;
+                        document.getElementById('fb-login-form').submit();
+                    });
+                }
+            }, {scope: 'public_profile,email'});
+        }
+
+        // 5. SHOW/HIDE PASSWORD
+        function togglePass(id) {
+            const x = document.getElementById(id);
+            x.type = x.type === "password" ? "text" : "password";
+        }
+    </script>
+</body>
+</html>
