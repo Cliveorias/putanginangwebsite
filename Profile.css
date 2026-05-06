@@ -1,0 +1,311 @@
+/* =========================================
+   A. GLOBAL SETUP & VARIABLES
+   ========================================= */
+:root {
+    /* Primary Colors - EXACT FROM HOMEPAGE */
+    --primary-orange: #FFBD59; 
+    --highlight-orange: #F4A42B; 
+    --accent-red: #FA5252; 
+    --order-now-red: #C92C1C; 
+    
+    /* Neutral Colors - EXACT FROM HOMEPAGE */
+    --bg-cream: #FFF6E8;
+    --input-bg: #FFF3E0;
+    --text-dark: #333;
+    --white: #ffffff;
+    --cream: #FFF8E7;
+    --gold-star: gold;
+    --footer-bg-orange: #FFBD59;
+}
+
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    font-family: 'Poppins', sans-serif; 
+}
+
+body { 
+    background-color: var(--bg-cream); 
+    color: var(--text-dark); 
+    overflow-x: hidden;
+}
+
+/* =========================================
+   B. HEADER & NAVIGATION (1:1 MATCH SA HOMEPAGE)
+   ========================================= */
+header {
+    background-color: rgba(255, 189, 89, 0.85); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 15px 0; 
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--white);
+    text-decoration: none;
+}
+
+.logo-circle {
+    width: 45px;
+    height: 45px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+    border: 2px solid white;
+}
+
+.logo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.logo h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin: 0; 
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    letter-spacing: 0.5px;
+    color: var(--white);
+    line-height: 1; 
+}
+
+.desktop-nav {
+    display: flex;
+    gap: 15px;
+}
+
+.desktop-nav a {
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+.desktop-nav a:hover, .desktop-nav a.active {
+    color: var(--order-now-red);
+    background: rgba(255, 255, 255, 0.2);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 
+                 0 0 20px var(--order-now-red);
+    transform: translateY(-2px);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-profile-desktop {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 12px 4px 4px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: 0.3s;
+    height: 40px; 
+}
+
+.header-profile-desktop.active-profile {
+    border: 1.5px solid var(--order-now-red);
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.profile-img-small {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.profile-img-small img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.header-user-name {
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.cart-icon-btn {
+    position: relative;
+    background: var(--white);
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary-orange);
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: transform 0.2s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #ff4757;
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 800;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    line-height: 1;
+}
+
+.hamburger-menu {
+    cursor: pointer;
+    font-size: 1.8rem;
+    color: var(--white);
+    display: none;
+    align-items: center;
+}
+
+@media (max-width: 1024px) {
+    .desktop-nav, .header-profile-desktop, .cart-icon-btn { display: none !important; }
+    .hamburger-menu { display: flex !important; }
+    .header-container { padding: 0 15px; }
+}
+
+/* =========================================
+   C. SIDE NAVIGATION
+   ========================================= */
+.side-nav {
+    position: fixed;
+    top: 0;
+    right: -320px; 
+    width: 300px;
+    height: 100vh;
+    background-color: #FFF3E0;
+    z-index: 2000;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.side-nav.active { right: 0; }
+
+.nav-profile {
+    background-color: #F49D35;
+    padding: 30px 20px;
+    position: relative;
+    color: white;
+}
+
+.profile-info { display: flex; align-items: center; gap: 15px; }
+.profile-img { width: 60px; height: 60px; background: #ccc; border-radius: 50%; overflow: hidden; display: flex; justify-content: center; align-items: center; font-size: 2rem; }
+
+.nav-links { padding: 15px; display: flex; flex-direction: column; gap: 10px; }
+.nav-links a {
+    display: flex; align-items: center; gap: 15px; padding: 12px 20px;
+    background-color: #F49D35; color: white; text-decoration: none;
+    border-radius: 10px; font-weight: 700; transition: 0.3s;
+}
+.nav-links a.active { background-color: #C92C1C; }
+
+.close-btn { position: absolute; top: 10px; right: 15px; font-size: 1.5rem; cursor: pointer; color: white; }
+.overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; z-index: 1500; }
+.overlay.active { display: block; }
+
+/* =========================================
+   D. PROFILE CONTENT AREA
+   ========================================= */
+.profile-container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+.page-title { font-family: 'Fredoka One', cursive; font-size: 2.5rem; color: var(--highlight-orange); margin-bottom: 30px; }
+
+.info-card { background: var(--white); border-radius: 15px; padding: 25px; margin-bottom: 25px; border: 1.5px solid #ddd; }
+.card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; border-bottom: 2px solid var(--bg-cream); padding-bottom: 10px; }
+.card-header h2 { font-size: 1.4rem; color: #333; }
+
+/* PASSWORD ICON STYLES */
+.card-header i.fa-shield-halved { color: var(--order-now-red); font-size: 1.2rem; }
+
+.personal-flex { display: flex; gap: 40px; align-items: flex-start; }
+.inputs-side { flex: 2; }
+.photo-side { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; }
+
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; font-weight: 700; margin-bottom: 5px; font-size: 0.9rem; }
+.form-group input { width: 100%; padding: 12px; background: var(--input-bg); border: 1.5px solid #FFE0B2; border-radius: 10px; outline: none; font-weight: 600; }
+.edit-link { font-size: 0.8rem; color: var(--highlight-orange); text-decoration: underline; display: block; margin-top: 5px; text-align: right; }
+
+/* PASSWORD INPUTS */
+input[type="password"]::placeholder { color: #ccc; font-size: 0.9rem; }
+
+.avatar-big { width: 130px; height: 130px; background: #ccc; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 4rem; position: relative; margin-bottom: 15px; overflow: hidden; }
+.camera-icon { position: absolute; bottom: 5px; right: 5px; background: var(--highlight-orange); color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: 3px solid white; font-size: 1rem; z-index: 2; }
+.edit-photo { font-size: 0.8rem; color: var(--highlight-orange); text-decoration: none; font-weight: 600; margin-bottom: 20px; }
+
+.btn-save { width: 100%; background: var(--highlight-orange); color: white; border: none; padding: 12px; border-radius: 10px; font-weight: 800; font-size: 1.2rem; box-shadow: 0 4px 0 #d48806; cursor: pointer; transition: 0.3s; }
+.btn-save:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(244, 164, 43, 0.4); }
+
+.address-box { background: var(--input-bg); padding: 15px; border-radius: 10px; border: 1.5px solid #FFE0B2; margin-bottom: 15px; font-weight: 500; }
+
+.security-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.social-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-weight: 700; }
+.btn-connect { background: #2ecc71; color: white; border: none; padding: 5px 15px; border-radius: 20px; cursor: pointer; }
+
+.delete-logout-btns { display: flex; flex-direction: column; gap: 10px; }
+.btn-outline-logout { background: white; color: #e74c3c; border: 2px solid #e74c3c; padding: 10px; border-radius: 10px; font-weight: 700; cursor: pointer; }
+.btn-red-delete { background: #ff0000; color: white; border: none; padding: 10px; border-radius: 10px; font-weight: 700; cursor: pointer; }
+
+footer { background: var(--primary-orange); color: white; padding: 30px 0 0; margin-top: 50px; }
+.footer-bottom { text-align: center; padding: 15px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.8rem; }
+
+@media (max-width: 768px) {
+    .personal-flex, .security-grid { flex-direction: column; grid-template-columns: 1fr; }
+}
+
+.status-connected { color: #2ecc71; font-weight: 800; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; }
+textarea.address-box { width: 100%; min-height: 80px; font-family: inherit; resize: vertical; outline: none; }
+.profile-img img, .avatar-big img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }

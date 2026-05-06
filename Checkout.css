@@ -1,0 +1,453 @@
+
+/* =========================================
+   A. GLOBAL VARIABLES (From Homepage)
+   ========================================= */
+:root {
+    --primary-orange: #FFBD59; 
+    --highlight-orange: #F4A42B; 
+    --accent-red: #FA5252; 
+    --order-now-red: #C92C1C; 
+    --footer-bg-orange: #FFBD59;
+    
+    --text-dark: #333;
+    --text-light: #666;
+    --white: #ffffff;
+    --cream: #FFF8E7; 
+    --gold-star: gold; 
+}
+
+/* General Reset */
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #FFF6E8; 
+    color: var(--text-dark);
+}
+
+/* =========================================
+   B. HEADER & NAVIGATION
+   All header styles inherited from homepage.css
+   ========================================= */
+
+.btn-order-now {
+    background: #ff4757;
+    color: var(--white);
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 0 #d63031;
+    transition: transform 0.1s;
+}
+
+.btn-order-now:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #d63031;
+}
+
+/* --- LAYOUT CONFIG --- */
+.checkout-wrapper {
+    background-color: #FFF6E8;
+    padding-bottom: 50px;
+}
+
+.checkout-content-fit {
+    max-width: 1000px; /* Binago mula 800px para mas malapad */
+    margin: 0 auto;
+    padding: 20px;
+}
+/* Page Header */
+.checkout-header-section { margin-bottom: 30px; }
+.checkout-header-section h1 { font-family: 'Fredoka One', cursive; font-size: 2.2rem; }
+
+/* Progress Bar */
+.progress-track { display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px; padding: 0 40px; }
+.circle { width: 35px; height: 35px; border-radius: 50%; background: #FFD194; display: flex; justify-content: center; align-items: center; font-weight: bold; color: #555; }
+.step.active .circle, .step.completed .circle { background: #FFB74D; color: white; }
+.line { flex: 1; height: 3px; background: #FFD194; margin-top: -20px; }
+.line.active { background: #FFB74D; }
+
+/* Section Banners (The Horizontal Orange Band) */
+.section-title {
+    background-color: #FFB74D; /* Kulay orange sa picture */
+    color: #000;               /* Itim na text */
+    font-weight: 900;          /* Sobrang kapal na text gaya ng sa pic */
+    font-size: 1.5rem;         /* Laki ng text */
+    padding: 10px 0;           /* Taas at baba ng banner */
+    border-radius: 0;          /* ITO ANG IMPORTANTE: Ginagawang diretso ang banner */
+}
+
+.section-banner {
+    background-color: #FFB74D;
+    padding: 12px 20px;
+    font-weight: 800;
+    color: #333;
+    border-radius: 4px;
+    margin: 25px 0 15px 0;
+    font-size: 1.1rem;
+}
+
+/* Interactive Cards & Buttons */
+.options-row, .payment-row { display: flex; gap: 15px; }
+.opt-btn, .pay-btn {
+    flex: 1; padding: 15px; background: #FFD194; border: 1.5px solid #333;
+    border-radius: 12px; cursor: pointer; transition: 0.3s;
+    font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+.opt-btn.active, .pay-btn.active { background: #FFB74D; box-shadow: inset 0 0 5px rgba(0,0,0,0.1); transform: scale(1.02); }
+
+/* Address Card (Exact Look) */
+.address-card {
+    display: flex; align-items: center; background: #FFD194; padding: 15px;
+    border-radius: 15px; border: 1.5px solid #333; cursor: pointer; transition: 0.3s;
+}
+.address-map-thumb {
+    width: 70px; height: 70px; background: white; border-radius: 10px; position: relative;
+    overflow: hidden; border: 1px solid #ccc;
+}
+.address-map-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
+.map-pin { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #D32F2F; font-size: 1.5rem; }
+
+.address-details { flex: 1; padding-left: 20px; }
+.address-details h3 { font-size: 1.1rem; margin-bottom: 2px; }
+.address-details p { font-size: 0.9rem; color: #333; line-height: 1.3; }
+
+/* Summary Items */
+.summary-card { background: #FFF3E0; border-radius: 15px; border: 1.5px solid #FFE0B2; padding: 20px; }
+.summary-item { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #FFE0B2; }
+.summary-item img { width: 65px; height: 65px; border-radius: 50%; border: 2px solid white; }
+.item-info { flex: 1; }
+.item-info h3 { font-size: 1rem; margin-bottom: 5px; }
+.qty-pill { display: flex; align-items: center; gap: 12px; background: white; padding: 4px 12px; border-radius: 20px; border: 1px solid #ddd; width: fit-content; }
+.qty-pill button { border: none; background: none; color: orange; cursor: pointer; font-size: 1rem; }
+
+/* Prices */
+.item-price { text-align: right; }
+.now { display: block; font-weight: 800; font-size: 1rem; }
+.was { font-size: 0.8rem; color: #999; text-decoration: line-through; }
+.bill-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
+.final-price { color: #D32F2F; font-weight: 900; font-size: 1.6rem; }
+
+/* HOVER ANIMATIONS */
+.address-card:hover, .opt-btn:hover, .pay-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* PALITAN ITONG SECTION SA CHECKOUT.CSS */
+.instructions-box {
+    background-color: #FFD194; /* Peach bg gaya ng address card */
+    padding: 25px;             /* Espasyo sa loob ng peach box */
+    border-radius: 15px;       /* Bilog na kanto */
+    border: 1.5px solid #333;  /* Manipis na itim na border */
+    margin-top: 10px;
+}
+
+.instructions-box input {
+    width: 100%;
+    background-color: #ffffff; /* Puti na input box */
+    border: none;              /* Alisin ang default border */
+    padding: 20px;             /* Taas at laki ng puting box */
+    border-radius: 12px;       /* Bilog na kanto ng puting box */
+    font-size: 1.1rem;         /* Laki ng text */
+    font-weight: 500;
+    color: #333;
+    outline: none;             /* Alisin ang asul na highlight pag clinick */
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.05); /* Soft shadow sa loob */
+}
+
+/* Hover effect para maganda tignan */
+.instructions-box:hover {
+    transform: translateY(-2px);
+    transition: 0.3s;
+}
+
+/* --- ORDER SUMMARY CARD --- */
+.summary-card {
+    background-color: #FFF8E7; /* Light beige bg */
+    border-radius: 15px;
+    border: 1.5px solid #333;
+    padding: 0; /* Alisin padding para dikit ang total bar sa gilid */
+    overflow: hidden;
+}
+
+.summary-item {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 15px;
+    border-bottom: 1px solid #FFE0B2;
+}
+
+.summary-item img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.item-info { flex: 1; }
+.item-info h3 { font-size: 1.1rem; margin-bottom: 10px; color: #4A3B2A; }
+
+/* QTY PILL (White rounded control) */
+.qty-pill {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: white;
+    padding: 5px 15px;
+    border-radius: 25px;
+    border: 1px solid #ddd;
+    width: fit-content;
+}
+.qty-pill button {
+    border: none;
+    background: none;
+    color: #FFB74D;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* PRICE STACK (Current vs Old) */
+.item-price-stack { text-align: right; }
+.item-price-stack .now { display: block; font-weight: 800; font-size: 1.1rem; color: #000; }
+.item-price-stack .was { font-size: 0.85rem; color: #999; text-decoration: line-through; }
+
+.bill-details { padding: 20px; }
+.bill-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 1rem; }
+.bill-row strong { font-weight: 800; }
+.price-stack { display: flex; flex-direction: column; align-items: flex-end; }
+.price-stack small { color: #999; text-decoration: line-through; font-size: 0.8rem; }
+
+.voucher-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #FFE0B2;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.terms-text { font-size: 0.8rem; color: #555; margin-top: 15px; }
+
+/* TOTAL BAR (Beige background color) */
+.total-section { padding: 0 15px 20px; }
+.total-bar {
+    background-color: #FFD194; /* Darker beige/orange */
+    padding: 15px 20px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.grand-total { color: #D32F2F; font-weight: 900; font-size: 1.5rem; }
+.old-grand-total { display: block; text-align: right; color: #777; text-decoration: line-through; font-size: 0.85rem; }
+
+/* PLACE ORDER BUTTON */
+.btn-place-order {
+    width: 100%;
+    background-color: #FFBD59;
+    border: 2px solid #000;
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: 900;
+    font-size: 1.3rem;
+    box-shadow: 0 4px 0 #000;
+    cursor: pointer;
+    transition: 0.1s;
+}
+.btn-place-order:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #000;
+}
+
+/* --- ADDRESS MODAL STYLES --- */
+.address-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.address-modal-overlay.show { display: flex; }
+
+.address-modal-content {
+    background-color: #FFF6E8;
+    width: 90%; max-width: 500px;
+    padding: 30px;
+    border-radius: 20px;
+    border: 2px solid #333;
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.1);
+}
+
+.modal-title { font-family: 'Fredoka One', cursive; margin-bottom: 20px; font-size: 1.8rem; }
+
+.address-list { display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; }
+
+/* Modal Cards (Simplified version of your main card) */
+.modal-address-card {
+    display: flex; align-items: center; background: #FFD194; padding: 12px;
+    border-radius: 12px; border: 1.5px solid #333; cursor: pointer; transition: 0.2s;
+    opacity: 0.7;
+}
+
+.modal-address-card.active { opacity: 1; border-width: 2.5px; box-shadow: 4px 4px 0px #333; }
+
+.modal-map-thumb {
+    width: 60px; height: 60px; background: white; border-radius: 8px; position: relative;
+    overflow: hidden; border: 1px solid #ccc;
+}
+.modal-map-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
+
+.add-new-address-btn {
+    background: none; border: none; font-weight: 800; font-size: 1rem;
+    cursor: pointer; margin-bottom: 30px; display: flex; align-items: center; gap: 10px;
+}
+
+/* Footer Buttons */
+.modal-footer-btns { display: flex; gap: 20px; }
+.btn-cancel {
+    flex: 1; padding: 15px; border-radius: 12px; border: 2px solid #FFB74D;
+    background: white; color: #FFB74D; font-weight: 800; font-size: 1.1rem; cursor: pointer;
+}
+.btn-save {
+    flex: 1; padding: 15px; border-radius: 12px; border: none;
+    background: #FFB74D; color: white; font-weight: 800; font-size: 1.1rem; cursor: pointer;
+    box-shadow: 0 4px 0 #d48806;
+}
+.btn-save:active { transform: translateY(2px); box-shadow: 0 2px 0 #d48806; }
+
+/* =========================================
+   D. FOOTER STYLES (MATCHING HOMEPAGE)
+   ========================================= */
+#contact {
+    background-color: var(--footer-bg-orange); 
+    color: var(--white);
+    padding: 1.5rem 0 0; 
+    font-family: sans-serif; 
+    font-size: 0.9rem; 
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px 1rem;
+}
+
+.footer-section {
+    padding: 0 1rem;
+    min-width: 180px;
+    margin-bottom: 1rem;
+}
+
+.footer-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.contact-info {
+    flex-basis: 30%;
+    align-items: flex-start;
+}
+
+.details {
+    margin-top: 15px;
+}
+
+.details p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0 0 5px;
+}
+
+.details i {
+    font-size: 1rem;
+    margin-right: 8px;
+}
+
+.footer-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    font-family: 'Fredoka One', cursive;
+}
+
+.footer-section ul li {
+    margin-bottom: 5px;
+}
+
+.footer-section ul li a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.8rem;
+    color: #F0F0F0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2); 
+    margin-top: 1rem;
+}
+
+/* =========================================
+   E. MOBILE RESPONSIVENESS
+   ========================================= */
+@media (max-width: 768px) {
+    /* Header Adjustments */
+    .header-container {
+        padding: 0 15px;
+    }
+    .desktop-nav { display: none; } /* Hide desktop nav on mobile */
+    
+    .logo h2 { font-size: 0.9rem; } /* Smaller text logo */
+    
+    .btn-order-now {
+        padding: 8px 15px;
+        font-size: 0.8rem;
+    }
+
+    /* Footer Adjustments */
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .footer-section {
+        margin-bottom: 2rem;
+        align-items: center;
+    }
+    .contact-info { align-items: center; }
+
+    /* Checkout Layout Adjustments */
+    .checkout-container { padding: 20px 15px; max-width: 100%; }
+    .checkout-header h1 { font-size: 1.8rem; }
+    .row { flex-direction: column; gap: 15px; }
+    .option-buttons, .payment-options { flex-direction: column; gap: 10px; }
+    .opt-btn, .pay-btn { width: 100%; }
+    .summary-box { padding: 20px; }
+    .grand-total-row { padding: 15px; }
+    .total-amount { font-size: 1.3rem; }
+}

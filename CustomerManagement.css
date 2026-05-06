@@ -1,0 +1,308 @@
+/* --- ROOT VARIABLES --- */
+:root {
+    --primary-orange: #FFBD59;
+    --sidebar-bg: #ffffff;
+    --body-bg: #fdf6ec; /* Creamy background mula sa iyong screenshot */
+    --text-dark: #333;
+    --text-gray: #777;
+    --card-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    --transition: 0.3s ease;
+}
+
+/* --- BASIC RESET --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    background-color: var(--body-bg);
+    min-height: 100vh;
+}
+
+/* --- SIDEBAR STYLE (Mula sa iyong 2nd Pic) --- */
+.sidebar {
+    width: 280px;
+    background: var(--sidebar-bg);
+    height: 100vh;
+    position: fixed;
+    border-right: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    z-index: 100;
+}
+
+.logo-box {
+    padding: 0 30px 40px;
+    text-align: center;
+}
+
+.logo-box img {
+    width: 120px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-orange);
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    padding: 5px 25px;
+    margin-bottom: 5px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-gray);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    transition: var(--transition);
+}
+
+/* Active link style gaya ng sa Staff & Activity pic mo */
+.nav-links li.active a, 
+.nav-links a:hover {
+    background: var(--primary-orange);
+    color: white;
+}
+
+/* --- MAIN CONTENT AREA --- */
+.main-content {
+    margin-left: 280px;
+    width: calc(100% - 280px);
+}
+
+/* HEADER STYLE (Mula sa iyong Dashboard pic) */
+header {
+    background: var(--primary-orange);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
+.header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.header-title span {
+    font-weight: 400;
+    opacity: 0.9;
+    border-left: 2px solid white;
+    padding-left: 10px;
+}
+
+.header-icons {
+    display: flex;
+    gap: 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* --- CONTAINER --- */
+.container {
+    padding: 40px;
+}
+
+.page-title {
+    margin-bottom: 30px;
+    font-weight: 800;
+    color: var(--text-dark);
+    font-size: 1.8rem;
+}
+
+/* --- CUSTOMER CARDS (Fixed Alignment) --- */
+.customer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.customer-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: var(--transition);
+}
+
+.customer-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.card-accent {
+    height: 10px;
+    background: var(--primary-orange);
+}
+
+.card-body {
+    padding: 25px 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* INFO SECTION: Binigyan ng fixed flex-basis para pantay ang kasunod */
+.customer-info {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    flex-basis: 40%; /* Eto ang fix para hindi umusog ang stats row */
+    min-width: 380px;
+}
+
+.avatar {
+    width: 75px;
+    height: 75px;
+    background: #f0f0f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 2px solid #eee;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar i {
+    font-size: 2.2rem;
+    color: #ccc;
+}
+
+.details h3 {
+    font-size: 1.25rem;
+    color: #222;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.contact-row {
+    color: #666;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.contact-row i {
+    width: 20px;
+    color: #444;
+}
+
+/* STATS ROW: Naka-align at may vertical separator */
+.stats-row {
+    flex-basis: 40%;
+    display: flex;
+    gap: 40px;
+    color: #444;
+    font-size: 0.95rem;
+    border-left: 2px solid #eee; /* Vertical line separator */
+    padding-left: 40px;
+    height: 50px;
+    align-items: center;
+}
+
+.stat strong {
+    font-size: 1.1rem;
+    color: #111;
+    margin-left: 5px;
+}
+
+.stat i {
+    color: var(--primary-orange);
+    font-size: 1.1rem;
+}
+
+/* ACTIONS SECTION */
+.actions {
+    flex-basis: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.btn-action {
+    width: 120px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: var(--transition);
+    font-size: 0.9rem;
+}
+
+.btn-block {
+    background: #c0392b;
+    color: white;
+}
+
+.btn-block:hover {
+    background: #a93226;
+    transform: scale(1.05);
+}
+
+.btn-delete {
+    background: white;
+    border: 1.5px solid #ddd;
+    color: #333;
+}
+
+.btn-delete:hover {
+    background: #f9f9f9;
+    border-color: #bbb;
+    transform: scale(1.05);
+}
+
+.btn-delete i {
+    color: #e74c3c;
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 1200px) {
+    .card-body {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .customer-info, .stats-row, .actions {
+        flex-basis: 100%;
+        border-left: none;
+        padding-left: 0;
+        align-items: center;
+        text-align: center;
+    }
+    .actions {
+        flex-direction: row;
+        justify-content: center;
+    }
+}

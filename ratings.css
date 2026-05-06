@@ -1,0 +1,47 @@
+:root {
+    --primary-orange: #FFBD59;
+    --highlight-orange: #F4A42B;
+    --cream: #FFF8E7;
+    --white: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+body { background-color: var(--cream); color: #333; }
+
+/* Header styles inherited from homepage.css */
+
+/* --- SUMMARY SECTION --- */
+.container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+.section-title { color: var(--highlight-orange); font-weight: 900; margin-bottom: 30px; }
+
+.rating-summary { display: flex; gap: 40px; background: white; padding: 30px; border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); margin-bottom: 30px; align-items: center; }
+.score-box { text-align: left; min-width: 150px; }
+.stars-display i { font-size: 1.5rem; color: #ddd; }
+.big-score { font-size: 4rem; font-weight: 900; line-height: 1; margin: 10px 0; }
+.total-text { color: #888; font-weight: 700; }
+
+.progress-container { flex: 1; }
+.bar-row { display: flex; align-items: center; gap: 15px; margin-bottom: 8px; font-weight: 900; color: var(--highlight-orange); }
+.bar-bg { flex: 1; height: 35px; background: #eee; border-radius: 10px; overflow: hidden; }
+.bar-fill { height: 100%; background: #ccc; border-radius: 10px; transition: 0.5s; }
+
+/* --- FILTERS --- */
+.filter-wrapper { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 20px; margin-bottom: 20px; scrollbar-width: none; }
+.filter-btn { padding: 10px 25px; border-radius: 50px; border: none; background: white; font-weight: 700; color: #666; cursor: pointer; white-space: nowrap; transition: 0.3s; }
+.filter-btn.active, .filter-btn:hover { background: var(--highlight-orange); color: white; }
+
+/* --- REVIEW CARDS --- */
+.review-card { background: white; padding: 25px; border-radius: 20px; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+.review-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+.user-avatar { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--primary-orange); }
+.user-meta h4 { font-weight: 800; font-size: 1rem; }
+.card-stars i { color: #ddd; font-size: 0.8rem; }
+.card-stars i.active { color: var(--highlight-orange); }
+.review-date { margin-left: auto; font-size: 0.8rem; color: #aaa; font-weight: 600; }
+.review-text { font-size: 0.95rem; color: #555; line-height: 1.5; }
+.attached-img { width: 100%; max-width: 300px; border-radius: 15px; margin-top: 15px; border: 1px solid #eee; }
+
+/* --- FOOTER --- */
+footer { background-color: var(--primary-orange); color: white; padding: 40px 10%; margin-top: 50px; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
+.footer-logo img { width: 100px; border-radius: 50%; border: 3px solid white; margin-bottom: 15px; }

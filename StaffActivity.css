@@ -1,0 +1,76 @@
+/* --- ENTRANCE ANIMATIONS --- */
+@keyframes popUp {
+    0% { opacity: 0; transform: scale(0.9) translateY(30px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-pop {
+    animation: popUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1.1) forwards;
+    opacity: 0;
+}
+
+.row-animate {
+    animation: slideIn 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+/* --- LAYOUT GRID --- */
+.staff-layout-grid {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.left-col { display: flex; flex-direction: column; gap: 30px; }
+
+.page-main-title { font-size: 1.8rem; font-weight: 600; margin-bottom: 25px; color: #333; }
+
+/* Card Styling (Neubrutalism) */
+.staff-card { background: #fff; padding: 0; border: 1.5px solid #333; border-radius: 15px; overflow: hidden; box-shadow: 6px 6px 0px rgba(0,0,0,0.05); }
+
+.card-header-orange {
+    background-color: #FFBD59;
+    padding: 15px 20px;
+    border-bottom: 1.5px solid #333;
+}
+.card-header-orange h3 { font-family: 'Fredoka One', cursive; font-size: 1rem; color: #000; letter-spacing: 0.5px; }
+
+/* Table Styling */
+table { width: 100%; border-collapse: collapse; }
+th { text-align: left; padding: 15px 20px; font-size: 0.85rem; color: #333; border-bottom: 1px solid #eee; }
+td { padding: 15px 20px; font-size: 0.85rem; font-weight: 600; border-bottom: 1px solid #eee; }
+
+/* Form Styling */
+.form-content { padding: 25px; }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-weight: 800; font-size: 0.9rem; margin-bottom: 8px; }
+
+.input-wrapper { position: relative; }
+.input-wrapper i { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #666; cursor: pointer; }
+
+input[type="text"], .staff-select, textarea {
+    width: 100%; padding: 12px 15px; border-radius: 10px; border: 1px solid #ddd;
+    background: #D9D9D9; /* Matching the grey in the pic */
+    font-weight: 600; font-family: inherit; outline: none;
+}
+
+textarea { height: 100px; resize: none; }
+
+.file-upload {
+    width: 60px; height: 35px; background: #D9D9D9; border-radius: 8px;
+    display: flex; justify-content: center; align-items: center; border: 1px solid #999; cursor: pointer;
+}
+
+.btn-orange-add {
+    float: right; margin-top: 10px;
+    background-color: #FFBD59; border: none; padding: 10px 40px;
+    border-radius: 8px; font-weight: 800; cursor: pointer;
+    box-shadow: 2px 2px 0px #333; transition: 0.2s;
+}
+.btn-orange-add:active { transform: translate(2px, 2px); box-shadow: none; }
