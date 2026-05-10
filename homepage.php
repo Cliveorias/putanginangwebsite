@@ -106,6 +106,7 @@ while ($row = mysqli_fetch_assoc($cart_query)) { $db_items[] = $row; }
             <div class="logo-circle"><img src="https://res.cloudinary.com/dn38jxbeh/image/upload/v1772298452/logo_ate_kabayan_jtfqeg.jpg" alt="Logo"></div>
             <h2>KAINAN NI ATE KABAYAN</h2>
         </a>
+        
         <nav class="desktop-nav">
             <a href="homepage.php" class="active">Home</a>
             <a href="menu.php">Menu</a>
@@ -168,8 +169,12 @@ while ($row = mysqli_fetch_assoc($cart_query)) { $db_items[] = $row; }
 <div class="overlay" id="overlay"></div>
 
 <section class="hero">
-    <div class="hero-text">
-         <div class="hero-buttons"><a href="menu.php" class="btn-order">ORDER NOW!</a></div>
+    <div class="hero-container-content">
+        <div class="hero-text-content">
+            <div class="hero-buttons">
+                <a href="menu.php" class="btn-order">ORDER NOW!</a>
+            </div>
+        </div>
     </div>
 </section>
 
